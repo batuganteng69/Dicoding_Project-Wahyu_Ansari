@@ -1,8 +1,11 @@
 package id.wahyu_ansari.dicoding_project.utils
 
+import android.content.ContentValues
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
+import android.provider.MediaStore
 import kotlin.math.min
 
 class DataLoader(private val context: Context) {
@@ -87,13 +90,13 @@ class DataLoader(private val context: Context) {
                 -900,
                 -800,
                 "Italy",
-                "Pompeii, located near Naples, was famously buried by the eruption of " +
-                        "Mount Vesuvius in 79 AD. The volcanic ash and debris preserved the " +
-                        "city remarkably well, freezing it in time. As you walk through its " +
-                        "streets, you’ll encounter ancient architecture, graffiti, and " +
-                        "everyday objects—a vivid glimpse into daily life during ancient Rome. " +
-                        "Pompeii is a UNESCO World Heritage Site and a must-visit for history " +
-                        "enthusiasts."
+                "Pompeii in Italy: Pompeii, located near Naples, was famously buried by " +
+                        "the eruption of Mount Vesuvius in 79 AD. The volcanic ash and " +
+                        "debris preserved the city remarkably well, freezing it in time. " +
+                        "As you walk through its streets, you’ll encounter ancient " +
+                        "architecture, graffiti, and everyday objects—a vivid glimpse into " +
+                        "daily life during ancient Rome. Pompeii is a UNESCO World Heritage " +
+                        "Site and a must-visit for history enthusiasts."
             ),
             HistoricalPlace(
                 "Tikal", "Guatemala",
@@ -101,12 +104,12 @@ class DataLoader(private val context: Context) {
                 -300,
                 300,
                 "Guatemala",
-                "Hidden deep within the Guatemalan jungle, Tikal was once a thriving " +
-                        "Mayan city. Its towering temples and pyramids rise above the dense " +
-                        "canopy, offering breathtaking views. Tikal’s history spans centuries, " +
-                        "and exploring its ruins feels like stepping into an adventure movie. " +
-                        "Climb the steep steps, listen to the howler monkeys, and imagine the " +
-                        "vibrant civilization that once thrived here."
+                "Tikal in Guatemala: Hidden deep within the Guatemalan jungle, Tikal was " +
+                        "once a thriving Mayan city. Its towering temples and pyramids rise " +
+                        "above the dense canopy, offering breathtaking views. Tikal’s history " +
+                        "spans centuries, and exploring its ruins feels like stepping into an " +
+                        "adventure movie. Climb the steep steps, listen to the howler monkeys, " +
+                        "and imagine the vibrant civilization that once thrived here."
             ),
             HistoricalPlace(
                 "Stonehenge", "England",
@@ -114,11 +117,11 @@ class DataLoader(private val context: Context) {
                 -3100,
                 -2400,
                 "England",
-                "Stonehenge, a prehistoric monument on Salisbury Plain, continues to " +
-                        "intrigue us. Its massive standing stones arranged in a circular " +
-                        "pattern raise questions about ancient rituals, astronomy, and human " +
-                        "ingenuity. Visit during sunrise or sunset to witness the magic of this " +
-                        "enigmatic site."
+                "Stonehenge in England: Stonehenge, a prehistoric monument on Salisbury " +
+                        "Plain, continues to intrigue us. Its massive standing stones arranged " +
+                        "in a circular pattern raise questions about ancient rituals, " +
+                        "astronomy, and human ingenuity. Visit during sunrise or sunset to " +
+                        "witness the magic of this enigmatic site."
             ),
             HistoricalPlace(
                 "Parthenon", "Greece",
@@ -126,10 +129,11 @@ class DataLoader(private val context: Context) {
                 -447,
                 -432,
                 "Greece",
-                "Perched atop the Acropolis in Athens, the Parthenon is an architectural " +
-                        "marvel. Dedicated to the goddess Athena, it exemplifies classical " +
-                        "Greek design. The Doric columns, intricate friezes, and timeless " +
-                        "symmetry make it a symbol of ancient wisdom and artistic excellence."
+                "Pantheon in Greece: Perched atop the Acropolis in Athens, the Parthenon " +
+                        "is an architectural marvel. Dedicated to the goddess Athena, it " +
+                        "exemplifies classical Greek design. The Doric columns, intricate " +
+                        "friezes, and timeless symmetry make it a symbol of ancient wisdom " +
+                        "and artistic excellence."
             ),
             HistoricalPlace(
                 "Machu Picchu", "Peru",
@@ -137,10 +141,11 @@ class DataLoader(private val context: Context) {
                 1450,
                 1530,
                 "Peru",
-                "High in the Andes, Machu Picchu stands as the “Lost City of the Incas.” " +
-                        "This ancient Incan citadel boasts terraces, temples, and panoramic " +
-                        "views. The mist-shrouded peaks and stone structures evoke a sense of " +
-                        "wonder and mystery. Hike the Inca Trail to reach this awe-inspiring site."
+                "Machu Picchu in Peru: High in the Andes, Machu Picchu stands as the " +
+                        "“Lost City of the Incas.” This ancient Incan citadel boasts terraces, " +
+                        "temples, and panoramic views. The mist-shrouded peaks and stone " +
+                        "structures evoke a sense of wonder and mystery. Hike the Inca Trail " +
+                        "to reach this awe-inspiring site."
             ),
             HistoricalPlace(
                 "Petra", "Jordan",
@@ -148,7 +153,8 @@ class DataLoader(private val context: Context) {
                 -900,
                 -800,
                 "Jordan",
-                "Carved into rose-red cliffs, Petra was the capital of the Nabatean " +
+                "Petra in Jordan: Petra, a famous archaeological site in Amman, Jordan. " +
+                        "Carved into rose-red cliffs, Petra was the capital of the Nabatean " +
                         "Kingdom. Its iconic Treasury (Al-Khazneh) is instantly recognizable " +
                         "from movies like “Indiana Jones.” Explore the narrow Siq, marvel at " +
                         "the rock-cut tombs, and imagine the bustling trade hub it once was."
@@ -159,10 +165,10 @@ class DataLoader(private val context: Context) {
                 1122,
                 1150,
                 "Cambodia",
-                "Angkor Wat, nestled in the Cambodian jungle, is a vast temple complex " +
-                        "dedicated to the Hindu god Vishnu (later converted to Buddhism). Its " +
-                        "intricate bas-reliefs, lotus-shaped towers, and vast moats evoke a " +
-                        "sense of spiritual grandeur."
+                "Angkor Wat in Cambodia: Angkor Wat, nestled in the Cambodian jungle, " +
+                        "is a vast temple complex dedicated to the Hindu god Vishnu " +
+                        "(later converted to Buddhism). Its intricate bas-reliefs, lotus-shaped " +
+                        "towers, and vast moats evoke a sense of spiritual grandeur."
             )
         )
 
@@ -183,6 +189,30 @@ class DataLoader(private val context: Context) {
         fun ByteArray.toBitmap(): Bitmap = BitmapFactory.decodeByteArray(
             this, 0, this.size
         )
+
+        fun saveBitmapAndGetUri(bitmap: Bitmap, context: Context): Uri? {
+            val contentValues = ContentValues().apply {
+                put(MediaStore.Images.Media.DISPLAY_NAME, "image.jpg")
+                put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+                put(MediaStore.Images.Media.IS_PENDING, 1)
+            }
+
+            val collection = MediaStore.Images.Media
+                .getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
+            val imageUri = context.contentResolver.insert(collection, contentValues)
+
+            imageUri?.let {
+                context.contentResolver.openOutputStream(it).use { outputStream ->
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream!!)
+                }
+
+                contentValues.clear()
+                contentValues.put(MediaStore.Images.Media.IS_PENDING, 0)
+                context.contentResolver.update(it, contentValues, null, null)
+            }
+
+            return imageUri
+        }
 
         fun Bitmap.resize(ratio: Float): Bitmap {
             val width = (this.width * ratio).toInt()

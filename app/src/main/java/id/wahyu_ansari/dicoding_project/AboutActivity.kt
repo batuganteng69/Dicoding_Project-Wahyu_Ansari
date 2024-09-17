@@ -1,5 +1,7 @@
 package id.wahyu_ansari.dicoding_project
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,5 +29,17 @@ class AboutActivity : AppCompatActivity() {
         val profilePic = binding.aboutPic
         profilePic.setImageBitmap(DataLoader(this).load("profilepic.jpg").toBitmap().centerCrop())
         toolbar.setTitle(getString(R.string.about))
+        binding.githubButton.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.github_link))))
+        }
+
+        binding.emailButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:")
+                putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.email)))
+            }
+
+            startActivity(intent)
+        }
     }
 }

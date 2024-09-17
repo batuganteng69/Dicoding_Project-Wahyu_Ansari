@@ -1,8 +1,14 @@
 package id.wahyu_ansari.dicoding_project
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import id.wahyu_ansari.dicoding_project.databinding.ActivityDetailsBinding
@@ -35,5 +41,35 @@ class DetailsActivity : AppCompatActivity() {
         binding.detailsText.text = data.details
         binding.toolbarDetails.setTitle(data.title)
         binding.toolbarDetails.setSubtitle(data.description)
+
+        val menuHost: MenuHost = binding.toolbarDetails
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menu.add(Menu.NONE, R.id.about_page, Menu.NONE, getString(R.string.share))
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.about_page -> {
+                        val imageUri = DataLoader.saveBitmapAndGetUri(
+                            data.icon.toBitmap(), this@DetailsActivity
+                        )
+
+                        val sendIntent = Intent().apply {
+                            action = Intent.ACTION_SEND
+                            type = "image/*"
+                            putExtra(Intent.EXTRA_STREAM, imageUri)
+                            putExtra(Intent.EXTRA_TEXT, data.details)
+                        }
+                        val shareIntent = Intent.createChooser(sendIntent, null)
+                        startActivity(shareIntent)
+
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+        })
     }
 }

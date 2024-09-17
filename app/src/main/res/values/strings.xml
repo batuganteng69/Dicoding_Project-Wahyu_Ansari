@@ -6,4 +6,9 @@
     <string name="about">About</string>
     <string name="author_name">Wahyu Ansari</string>
     <string name="profile_picture">Profile picture</string>
+    <string name="github_logo">Github Logo</string>
+    <string name="go_to_github">See this project on GitHub</string>
+    <string name="email">wahyu8002@gmail.com</string>
+    <string name="github_link">https://github.com/batuganteng69/Dicoding_Project-Wahyu_Ansari</string>
+    <string name="share">Share</string>
 </resources>
