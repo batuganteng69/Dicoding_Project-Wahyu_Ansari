@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Dicoding Project - Wahyu Ansari</string>
+    <string name="country">Country : %1$s</string>
+    <string name="build_start">Build Start : %1$s</string>
+    <string name="build_complete">Build Complete : %1$s</string>
+    <string name="about">About</string>
+    <string name="author_name">Wahyu Ansari</string>
+    <string name="profile_picture">Profile picture</string>
+</resources>
